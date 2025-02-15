@@ -1,9 +1,9 @@
 import express, { Request, Response, NextFunction } from "express";
 import cors from 'cors'
-import connectDB from "./config/mongodb";
+import connectDB from "../config/mongodb";
 import "dotenv/config"
-import userRouter from "./routes/userRoute";
-import connectCloudinary from "./config/cloudinary";
+import userRouter from "../routes/userRoute";
+import connectCloudinary from "../config/cloudinary";
 
 
 

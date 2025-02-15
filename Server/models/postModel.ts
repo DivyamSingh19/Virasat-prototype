@@ -7,7 +7,7 @@ const postSchema = new mongoose.Schema({
     date:{type:Number, required:true}
     
 
-})
+},{minimize:false})
 
 const postModel = mongoose.models.post || mongoose.model("post",postSchema)
 export default postModel

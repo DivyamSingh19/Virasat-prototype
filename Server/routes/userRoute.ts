@@ -1,12 +1,34 @@
-import express from 'express'
-import { Router,Request,Response } from 'express'
-import { loginUser,registerUser,adminLogin } from '../controllers/userController'
+import express, { Router } from "express";
+import { Request, Response } from "express";
+import { loginUser, registerUser, adminLogin } from "../controllers/userController";
 
+const userRouter: Router = express.Router();
 
-const userRouter = express.Router()
+userRouter.post("/register", async (req: Request, res: Response) => {
+  try {
+    await registerUser(req, res);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: "Internal Server Error" });
+  }
+});
 
-userRouter.post('/register',registerUser)
-userRouter.post('/login',loginUser)
-userRouter.post('/admin',adminLogin)
+userRouter.post("/login", async (req: Request, res: Response) => {
+  try {
+    await loginUser(req, res);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: "Internal Server Error" });
+  }
+});
+
+userRouter.post("/admin", async (req: Request, res: Response) => {
+  try {
+    await adminLogin(req, res);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: "Internal Server Error" });
+  }
+});
 
 export default userRouter;
