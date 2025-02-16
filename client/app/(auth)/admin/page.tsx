@@ -12,25 +12,25 @@ export default function Login() {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:4000/api/user/login", {
+      const res = await axios.post("http://localhost:4000/api/user/admin", {
         email,
         password,
       });
       localStorage.setItem("token", res.data.token);
       router.push("/");
     } catch (error) {
-      if (error instanceof Error) {
-       
-        setError(error.message);
-      } else if (typeof error === 'object' && error !== null && 'response' in error) {
-         
-        const axiosError = error as { response?: { data?: { error?: string } } };
-        setError(axiosError.response?.data?.error || 'Login failed');
-      } else {
-        
-        setError('Login failed');
+        if (error instanceof Error) {
+           
+          setError(error.message);
+        } else if (typeof error === 'object' && error !== null && 'response' in error) {
+           
+          const axiosError = error as { response?: { data?: { error?: string } } };
+          setError(axiosError.response?.data?.error || 'Login failed');
+        } else {
+           
+          setError('Login failed');
+        }
       }
-    }
   };
 
   return (
@@ -45,7 +45,7 @@ export default function Login() {
             Welcome back to Virasat
           </h1>
           <h2 className="text-gray-400 text-sm">
-            Please enter your details to sign in
+            Login as Admin
           </h2>
         </div>
 
@@ -113,10 +113,10 @@ export default function Login() {
         </div>
         <div className="mt-6 text-center">
           <a
-            href="/signup"
-            className="text-sm text-white hover:text-blue-500 transition-colors"
+            href="#"
+            className="text-sm text-gray-400 hover:text-blue-500 transition-colors"
           >
-            Register
+           Already on Virasat ? 
           </a>
         </div>
       </form>

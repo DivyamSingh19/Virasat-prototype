@@ -9,7 +9,7 @@ export default function Header() {
                 <Link href="/" className="text-md uppercase font-medium tracking-widest">Home</Link>
                 <Link href="#hsn" className="text-md uppercase font-medium tracking-widest">HSN</Link>
                 <Link href="#explore" className="text-md uppercase font-medium tracking-widest">Explore</Link>
-                <Link href="#events" className="text-md uppercase font-medium tracking-widest">HOT Events</Link>
+                <Link href="#events" className="text-md uppercase font-medium tracking-widest"> Events</Link>
                 <Link href="#testimonials" className="text-md uppercase font-medium tracking-widest">Testimonials</Link>
             </nav>
         </header>
