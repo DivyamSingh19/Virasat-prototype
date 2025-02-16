@@ -5,7 +5,7 @@ import {
   getForumPostById, 
   updateForumPost, 
   deleteForumPost 
-} from "../controllers/forumController";
+} from "../controllers/forumController.js"
 
 const forumRouter = express.Router();
  

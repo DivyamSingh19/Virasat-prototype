@@ -2,13 +2,13 @@ import userModel from "../models/userModel";
 import validator from "validator"
 import bycrypt from 'bcrypt'
 import JWT from 'jsonwebtoken'
-import { Request,Response } from "express";
+ 
 
-const createToken = (id:string) =>{
-    return JWT.sign({id},(process.env.JWT_SECRET)as string) 
+const createToken = (id) =>{
+    return JWT.sign({id},process.env.JWT_SECRET)  
 }
 
-const loginUser = async(req:Request,res:Response)=>{
+const loginUser = async(req ,res )=>{
       try {
         const {email,password} = req.body;
         const user = await userModel.findOne({email});
@@ -35,7 +35,7 @@ const loginUser = async(req:Request,res:Response)=>{
 
 }
 
-const registerUser = async (req:Request,res:Response)=>{
+const registerUser = async (req ,res )=>{
     try {
         const {name,email,password}= req.body;
         const exists = await userModel.findOne({email});
@@ -72,11 +72,11 @@ const registerUser = async (req:Request,res:Response)=>{
       }
 }
 
-const adminLogin = async (req:Request,res:Response)=>{
+const adminLogin = async (req ,res )=>{
     try {
         const {email,password} = req.body
         if(email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD){
-            const token = JWT.sign(email+password,(process.env.JWT_SECRET)as string)
+            const token = JWT.sign(email+password,process.env.JWT_SECRET)
             res.json({
                 success:true,
                 token
@@ -91,7 +91,7 @@ const adminLogin = async (req:Request,res:Response)=>{
     } catch (error) {
         console.log(error);
       
-        if (error instanceof Error) {
+        if (error ) {
           res.json({ success: false, message: error.message });
         } else {
           res.json({ success: false, message: "An unknown error occurred" });

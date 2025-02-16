@@ -1,8 +1,8 @@
-import { Request, Response } from "express";
+ 
 import jobModel from "../models/jobModel";
 
  
-export const createJob = async (req: Request, res: Response) => {
+export const createJob = async (req , res ) => {
   try {
     const { title, company, location, jobType, description, requirements, salary, postedBy } = req.body;
 
@@ -24,24 +24,24 @@ export const createJob = async (req: Request, res: Response) => {
     await newJob.save();
     res.status(201).json({ success: true, message: "Job posted successfully", job: newJob });
 
-  } catch (error: any) {
+  } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }
 };
 
  
-export const getAllJobs = async (req: Request, res: Response) => {
+export const getAllJobs = async (req , res ) => {
   try {
     const jobs = await jobModel.find().sort({ createdAt: -1 });
     res.status(200).json({ success: true, jobs });
 
-  } catch (error: any) {
+  } catch (error ) {
     res.status(500).json({ success: false, message: error.message });
   }
 };
 
  
-export const getJobById = async (req: Request, res: Response) => {
+export const getJobById = async (req , res ) => {
   try {
     const job = await jobModel.findById(req.params.id);
     if (!job) {
@@ -49,13 +49,13 @@ export const getJobById = async (req: Request, res: Response) => {
     }
     res.status(200).json({ success: true, job });
 
-  } catch (error: any) {
+  } catch (error ) {
     res.status(500).json({ success: false, message: error.message });
   }
 };
 
  
-export const updateJob = async (req: Request, res: Response) => {
+export const updateJob = async (req , res ) => {
   try {
     const updatedJob = await jobModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
     if (!updatedJob) {
@@ -63,13 +63,13 @@ export const updateJob = async (req: Request, res: Response) => {
     }
     res.status(200).json({ success: true, message: "Job updated successfully", job: updatedJob });
 
-  } catch (error: any) {
+  } catch (error ) {
     res.status(500).json({ success: false, message: error.message });
   }
 };
 
  
-export const deleteJob = async (req: Request, res: Response) => {
+export const deleteJob = async (req , res ) => {
   try {
     const deletedJob = await jobModel.findByIdAndDelete(req.params.id);
     if (!deletedJob) {
@@ -77,7 +77,7 @@ export const deleteJob = async (req: Request, res: Response) => {
     }
     res.status(200).json({ success: true, message: "Job deleted successfully" });
 
-  } catch (error: any) {
+  } catch (error ) {
     res.status(500).json({ success: false, message: error.message });
   }
 };

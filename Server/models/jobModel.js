@@ -1,21 +1,10 @@
 import mongoose, { Schema, Document } from "mongoose";
 
  
-interface IJob extends Document {
-  title: string;
-  company: string;
-  location?: string;
-  jobType: "Full-time" | "Part-time" | "Internship" | "Freelance";
-  description: string;
-  requirements: string[];
-  salary?: number;
-  postedBy: mongoose.Schema.Types.ObjectId;
-  createdAt: Date;
-  isActive: boolean;
-}
+ 
 
  
-const jobSchema = new Schema<IJob>(
+const jobSchema = new Schema (
   {
     title: { type: String, required: true },
     company: { type: String, required: true },
@@ -36,6 +25,6 @@ const jobSchema = new Schema<IJob>(
 );
 
  
-const jobModel = mongoose.model<IJob>("Job", jobSchema);
+const jobModel = mongoose.model ("Job", jobSchema);
 
 export default jobModel;

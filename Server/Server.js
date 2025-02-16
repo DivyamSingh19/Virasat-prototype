@@ -1,12 +1,12 @@
-import express, { Request, Response, NextFunction } from "express";
+import express from "express";
 import cors from 'cors'
-import connectDB from "./config/mongodb";
+import connectDB from "./config/mongodb.js";
 import "dotenv/config"
 import userRouter from "./routes/userRoute";
-import connectCloudinary from "./config/cloudinary";
-import jobRouter from "./routes/jobRoute";
-import forumRouter from "./routes/forumRoute";
-import postRoute from "./routes/postRoute";
+import connectCloudinary from "./config/cloudinary.js";
+import jobRouter from "./routes/jobRoute.js";
+import forumRouter from "./routes/forumRoute.js";
+import postRoute from "./routes/postRoute.js";
 const app = express();
 const port = process.env.PORT||4000
  
@@ -24,7 +24,7 @@ app.use('/api/jobs',jobRouter)
 app.use('/api/forum',forumRouter)
 app.use('/api/post',postRoute)
 
-app.get('/',(req:Request,res:Response)=>{
+app.get('/',(req,res)=>{
     res.send("API WORKING")
 }) 
    

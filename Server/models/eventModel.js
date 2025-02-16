@@ -1,20 +1,8 @@
 import mongoose from "mongoose";
 
-interface IEvent extends Document{
-    title:string;
-    description:string;
-    organizer:string;
-    image:string;
-    date:Date;
-    eventLocation:string;
-    isPaid:boolean;
-    price?:number|null;
-    attendees:mongoose.Types.ObjectId[];
-    createdAt:Date;
-}
+ 
 
-
-const eventsSchema = new mongoose.Schema<IEvent>({
+const eventsSchema = new mongoose.Schema ({
     title:{type:String,required:true},
     description:{type:String,required:true},
     eventLocation:{type:String,required:true},
@@ -30,5 +18,5 @@ const eventsSchema = new mongoose.Schema<IEvent>({
 },{timestamps:true})
 
 
-const eventModel = mongoose.model<IEvent>('Events',eventsSchema)
+const eventModel = mongoose.model('Events',eventsSchema)
 export default eventModel

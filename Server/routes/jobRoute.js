@@ -1,7 +1,7 @@
 import express, { Router } from "express";
-import { createJob, getAllJobs, getJobById, updateJob, deleteJob } from "../controllers/jobController";
+import { createJob, getAllJobs, getJobById, updateJob, deleteJob } from "../controllers/jobController.js";
 
-const jobRouter : Router = express.Router();
+const jobRouter  = express.Router();
  
 jobRouter.post("/", createJob);
 jobRouter.get("/", getAllJobs);

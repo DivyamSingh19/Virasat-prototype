@@ -18,7 +18,7 @@ const storage = multer.diskStorage({
 });
 
  
-const fileFilter = (req: any, file: Express.Multer.File, cb: any) => {
+const fileFilter = (req , file , cb) => {
   if (file.fieldname === 'resume' && !file.mimetype.includes('pdf')) {
     return cb(new Error('Only PDF resumes are allowed'), false);
   }
