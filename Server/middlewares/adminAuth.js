@@ -1,5 +1,5 @@
  
-import JWT, { JwtPayload } from "jsonwebtoken";
+import JWT from "jsonwebtoken";
 
 const adminAuth = async (req , res , next ) => {
     try {

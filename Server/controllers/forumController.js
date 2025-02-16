@@ -1,5 +1,5 @@
  
-import forumModel from "../models/forumModel";
+import forumModel from "../models/forumModel.js";
 
  
 export const createForumPost = async (req , res ) => {

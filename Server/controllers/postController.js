@@ -1,5 +1,5 @@
  
-import PostModel from "../models/postModel";
+import PostModel from "../models/postModel.js";
 
  
 export const createPost = async (req , res ) => {

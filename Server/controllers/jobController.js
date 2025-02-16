@@ -1,5 +1,5 @@
  
-import jobModel from "../models/jobModel";
+import jobModel from "../models/jobModel.js";
 
  
 export const createJob = async (req , res ) => {
