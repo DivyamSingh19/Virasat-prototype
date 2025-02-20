@@ -60,7 +60,7 @@ export function SignupForm({
         <CardHeader>
           <CardTitle className="text-2xl">Signup to Virasat</CardTitle>
           <CardDescription>
-            Let's start this beautiful journey
+            Let&apos; start this beautiful journey
           </CardDescription>
           <div>
             {error && <p className="text-red-500">{error}</p>}

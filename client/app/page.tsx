@@ -9,7 +9,8 @@ import {
   Telescope,
   Users,
 } from "lucide-react";
-import Testimonials from "@/components/testimonials/testimonials";
+import Testimonials from "@/components/testimonials/Testimonials";
+import NavigationCards from "@/components/navcards/Navcards";
 
 export default function Home() {
   return (
@@ -30,22 +31,7 @@ export default function Home() {
           </button>
         </div>
         <div className="text-5xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-6">
-            <nav  className="bg-red-200 cursor-pointer rounded-[2rem] flex items-center justify-center py-20 shadow-[0_4px_40px_0px_rgba(0,0,0,0.05)] text-4xl uppercase font-bold text-[#448aff]">
-              Jobs
-            </nav>
-            <nav className="bg-blue-900 cursor-pointer rounded-[2rem] flex items-center justify-center py-20 shadow-[0_4px_40px_0px_rgba(0,0,0,0.05)] text-4xl uppercase font-bold text-[#448aff]">
-              Events
-            </nav>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-6 mt-2">
-            <nav className="bg-yellow-400 cursor-pointer rounded-[2rem] flex items-center justify-center py-20 shadow-[0_4px_40px_0px_rgba(0,0,0,0.05)] text-4xl uppercase font-bold text-[#448aff]">
-              Forums
-            </nav>
-            <nav  className="bg-white cursor-pointer rounded-[2rem] flex items-center justify-center py-20 shadow-[0_4px_40px_0px_rgba(0,0,0,0.05)] text-4xl uppercase font-bold text-[#448aff]">
-              Mentors
-            </nav>
-          </div>
+           <NavigationCards/>
         </div>
       </section>
 
