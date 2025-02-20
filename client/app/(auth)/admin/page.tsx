@@ -2,8 +2,20 @@
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { cn } from "@/lib/utils";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
-export default function Login() {
+export default function AdminLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -16,110 +28,93 @@ export default function Login() {
         email,
         password,
       });
-      localStorage.setItem("token", res.data.token);
-      router.push("/");
-    } catch (error) {
-        if (error instanceof Error) {
-           
-          setError(error.message);
-        } else if (typeof error === 'object' && error !== null && 'response' in error) {
-           
-          const axiosError = error as { response?: { data?: { error?: string } } };
-          setError(axiosError.response?.data?.error || 'Login failed');
-        } else {
-           
-          setError('Login failed');
-        }
+      if(res.status === 200){
+        localStorage.setItem("token", res.data.token);
+        router.push("/dashboard");
+        console.log("Successful logged in");
       }
+    } catch (error) {
+      if (error instanceof Error) {
+        console.log(error.message);
+        setError(error.message);
+      } 
+      else if (
+        typeof error === "object" &&
+        error !== null &&
+        "response" in error
+      ) {
+        const axiosError = error as {
+          response?: { data?: { error?: string } };
+        };
+        setError(axiosError.response?.data?.error || "Login failed");
+      } else {
+        setError("Login failed");
+      }
+    }
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-white via-blue-900 to-white">
-      <form
-        onSubmit={handleLogin}
-        className="bg-black/20 p-8 rounded-xl border border-gray-800 shadow-2xl w-96 backdrop-blur-lg"
-      >
-         
-        <div className="text-center mb-8">
-          <h1 className="text-2xl font-bold text-white mb-2">
-            Welcome back to Virasat
-          </h1>
-          <h2 className="text-gray-400 text-sm">
-            Login as Admin
-          </h2>
+    <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
+      <div className="w-full max-w-sm">
+        <div className="flex flex-col gap-6">
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-2xl">Admin Login</CardTitle>
+              <CardDescription>
+                Enter your email below to login to your account
+              </CardDescription>
+              <div>{error && <p className="text-red-500">{error}</p>}</div>
+            </CardHeader>
+            <CardContent>
+              <form onSubmit={handleLogin}>
+                <div className="flex flex-col gap-6">
+                  <div className="grid gap-2">
+                    <Label htmlFor="email">Email</Label>
+                    <Input
+                      id="email"
+                      type="email"
+                      placeholder="m@example.com"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                    />
+                  </div>
+                  <div className="grid gap-2">
+                    <div className="flex items-center">
+                      <Label htmlFor="password">Password</Label>
+                      <Link
+                        href="#"
+                        className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
+                      >
+                        Forgot your password?
+                      </Link>
+                    </div>
+                    <Input
+                      id="password"
+                      type="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      required
+                    />
+                  </div>
+                  <Button type="submit" className="w-full">
+                    Login
+                  </Button>
+                  {/* <Button variant="outline" className="w-full">
+                Login with Google
+                </Button> */}
+                </div>
+                <div className="mt-4 text-center text-sm">
+                  Don&apos;t have an account?{" "}
+                  <Link href="/signup" className="underline underline-offset-4">
+                    Sign up
+                  </Link>
+                </div>
+              </form>
+            </CardContent>
+          </Card>
         </div>
-
-         
-        {error && (
-          <div className="bg-red-500/10 border border-red-500/50 rounded-lg p-3 mb-4">
-            <p className="text-red-500 text-sm text-center">{error}</p>
-          </div>
-        )}
-
-         
-        <div className="space-y-4">
-          <div>
-            <label
-              htmlFor="email"
-              className="block text-gray-400 text-sm font-medium mb-2"
-            >
-              Email
-            </label>
-            <input
-              id="email"
-              type="email"
-              placeholder="Enter your email"
-              className="w-full px-4 py-3 rounded-lg bg-gray-900 border border-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-
-          <div>
-            <label
-              htmlFor="password"
-              className="block text-gray-400 text-sm font-medium mb-2"
-            >
-              Password
-            </label>
-            <input
-              id="password"
-              type="password"
-              placeholder="Enter your password"
-              className="w-full px-4 py-3 rounded-lg bg-gray-900 border border-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-        </div>
-
-         
-        <div className="flex items-center justify-center"> 
-        <button
-          type="submit"
-          className="w-1/2 mt-6 px-4 py-3 rounded-lg bg-black text-white font-medium  border border-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition-all duration-200"
-        >
-          Login
-        </button>
-        </div>
-         
-        <div className="mt-6 text-center">
-          <a
-            href="#"
-            className="text-sm text-gray-400 hover:text-blue-500 transition-colors"
-          >
-            Forgot your password?
-          </a>
-        </div>
-        <div className="mt-6 text-center">
-          <a
-            href="#"
-            className="text-sm text-gray-400 hover:text-blue-500 transition-colors"
-          >
-           Already on Virasat ? 
-          </a>
-        </div>
-      </form>
+      </div>
     </div>
   );
 }
