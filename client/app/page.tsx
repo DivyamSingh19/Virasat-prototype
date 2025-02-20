@@ -24,26 +24,26 @@ export default function Home() {
             Building tomorrow&apos;s technology leaders through innovation,
             education, and collaboration.
           </p>
-          <button className="flex items-center gap-2 bg-[#448aff] text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors">
+          <button className="flex items-center gap-2 bg-[#448aff] text-white px-6 py-3 rounded-2xl hover:bg-[#448aff] transition-colors">
             Get Started <ArrowRight className="w-5 h-5" />
           </button>
         </div>
         <div className="text-5xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 px-6">
-            <nav  className="bg-red-200 rounded-[2rem] flex items-center justify-center py-32 shadow-[0_4px_40px_0px_rgba(0,0,0,0.05)] text-4xl uppercase font-bold text-[#448aff]">
-              Vision
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-6">
+            <nav  className="bg-red-200 cursor-pointer rounded-[2rem] flex items-center justify-center py-20 shadow-[0_4px_40px_0px_rgba(0,0,0,0.05)] text-4xl uppercase font-bold text-[#448aff]">
+              Jobs
             </nav>
-            <button className="bg-blue-900 rounded-[2rem] flex items-center justify-center py-32 shadow-[0_4px_40px_0px_rgba(0,0,0,0.05)] text-4xl uppercase font-bold text-[#448aff]">
-              Vision
-            </button>
+            <nav className="bg-blue-900 cursor-pointer rounded-[2rem] flex items-center justify-center py-20 shadow-[0_4px_40px_0px_rgba(0,0,0,0.05)] text-4xl uppercase font-bold text-[#448aff]">
+              Events
+            </nav>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-6 mt-2">
-            <button className="bg-yellow-400 rounded-[2rem] flex items-center justify-center py-32 shadow-[0_4px_40px_0px_rgba(0,0,0,0.05)] text-4xl uppercase font-bold text-[#448aff]">
-              Vision
-            </button>
-            <button className="bg-white rounded-[2rem] flex items-center justify-center py-32 shadow-[0_4px_40px_0px_rgba(0,0,0,0.05)] text-4xl uppercase font-bold text-[#448aff]">
-              Vision
-            </button>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-6 mt-2">
+            <nav className="bg-yellow-400 cursor-pointer rounded-[2rem] flex items-center justify-center py-20 shadow-[0_4px_40px_0px_rgba(0,0,0,0.05)] text-4xl uppercase font-bold text-[#448aff]">
+              Forums
+            </nav>
+            <nav  className="bg-white cursor-pointer rounded-[2rem] flex items-center justify-center py-20 shadow-[0_4px_40px_0px_rgba(0,0,0,0.05)] text-4xl uppercase font-bold text-[#448aff]">
+              Mentors
+            </nav>
           </div>
         </div>
       </section>
@@ -73,7 +73,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="" className="px-6 py-24 bg-[#448aff]/5">
+      <section id="about" className="px-6 py-24 bg-[#448aff]/5">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <StatCard number="10K+" label="Active Users" />
