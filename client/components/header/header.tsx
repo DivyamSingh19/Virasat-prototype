@@ -5,11 +5,11 @@ export default function Header() {
     const navItems = [
         {
             label: "Home",
-            href: "/",
+            href: "#home",
         },
         {
-            label: "MOQs",
-            href: "#moqs",
+            label: "Jobs",
+            href: "#jobs",
         },
         {
             label: "Explore",
@@ -17,7 +17,7 @@ export default function Header() {
         },
         {
             label: "Events",
-            href: "#events",
+            href: "#about",
         },
         {
             label: "Testimonials",
@@ -26,8 +26,8 @@ export default function Header() {
     ]
 
     return (
-        <header className="fixed top-12 left-1/2 -translate-x-1/2 flex items-center gap-8 justify-center z-10 bg-white">
-            <Link href="/" className="rounded-full w-20 h-20 grid place-items-center text-xl font-medium border bg-white">LoGo.</Link>
+        <header className="fixed top-12 left-1/2 -translate-x-1/2 flex items-center gap-8 justify-center z-10 bg-transparent">
+            <Link href="/" className="rounded-full w-20 h-20 grid place-items-center text-xl font-medium border bg-transparent">LoGo.</Link>
             <nav className="flex items-center gap-8 bg-background text-foreground p-6 border rounded-xl">
                 {navItems.map((navitem) => {
                     return (
