@@ -31,7 +31,7 @@ export default function Header() {
             <nav className="flex items-center gap-8 bg-background text-foreground p-6 border rounded-xl">
                 {navItems.map((navitem) => {
                     return (
-                        <Link href={navitem.href} className="text-md uppercase font-medium tracking-widest">{navitem.label}</Link>
+                        <Link href={navitem.href} key={navitem.label} className="text-md uppercase font-medium tracking-widest">{navitem.label}</Link>
                     )
                 })}
             </nav>
