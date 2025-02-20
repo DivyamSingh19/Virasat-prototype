@@ -8,19 +8,19 @@ export default function Header() {
             href: "/",
         },
         {
-            label: "HSN",
-            href: "#hsn",
+            label: "MOQs",
+            href: "#moqs",
         },
         {
             label: "Explore",
             href: "#explore",
         },
         {
-            label: "Hot Events",
+            label: "Events",
             href: "#events",
         },
         {
-            label: "Testies",
+            label: "Testimonials",
             href: "#testimonials",
         },
     ]
