@@ -9,7 +9,7 @@ export default function Header() {
     const navItems = [
         {
             label: "Home",
-            href: "#home",
+            href: "/",
         },
         {
             label: "Jobs",
